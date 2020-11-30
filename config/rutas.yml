@@ -1,0 +1,28 @@
+# rutas.yml
+---
+ruta_raíz:
+    path:     /
+    controller: 'funcionHomePage'
+    methods:   [ GET ]
+
+ruta_user_list:
+    path:     /users
+    controller: 'findAllUsers'
+    methods:
+      - GET
+
+ruta_user:
+    path:     /users/{name}
+    controller: 'findUserByName'
+    defaults:
+        name: _default_
+    methods:
+        - GET
+
+delete_user:
+    path:     /users/{name}
+    controller: 'deleteUseByName'
+    defaults:
+        name: _default_
+    methods:
+        - DELETE
