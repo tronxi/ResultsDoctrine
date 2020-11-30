@@ -35,7 +35,8 @@ function findUserByName(string $name)
     echo json_encode($userRepository->findByName($name));
 }
 
-function deleteUser(string $name)
+function deleteUserByName(string $name)
 {
-    //todo como se borra es un misterio
+    $userRepository = new UserRepository();
+    $userRepository->deleteByName($name);
 }

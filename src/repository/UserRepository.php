@@ -16,7 +16,7 @@ class UserRepository
     }
 
     public function findByName($name): User {
-        return $this->userRepositoryDoctrine->findBy(array(username => $name))[0];
+        return $this->userRepositoryDoctrine->findOneBy(array(username => $name));
     }
 
     public function findAll() {
@@ -26,6 +26,13 @@ class UserRepository
     public function save(User $user) {
         $entityManager = Utils::getEntityManager();
         $entityManager->persist($user);
+        $entityManager->flush();
+    }
+
+    public function deleteByName($name) {
+        $user = $this->findByName($name);
+        $entityManager = Utils::getEntityManager();
+        $entityManager->remove($entityManager->merge($user));
         $entityManager->flush();
     }
 }

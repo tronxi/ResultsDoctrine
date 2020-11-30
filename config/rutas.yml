@@ -20,9 +20,8 @@ ruta_user:
         - GET
 
 delete_user:
-    path:     /users/{name}
-    controller: 'deleteUseByName'
+    path:     /users/del/{name}
+    controller: 'deleteUserByName'
     defaults:
         name: _default_
-    methods:
-        - DELETE
+    methods: [ GET ]

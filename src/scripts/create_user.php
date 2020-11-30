@@ -19,8 +19,6 @@ $admin = (boolean) $argv[5];
 
 Utils::loadEnv(dirname(__DIR__, 2));
 
-$entityManager = Utils::getEntityManager();
-
 $user = new User();
 $user->setUsername($name);
 $user->setEmail($email);
@@ -31,7 +29,7 @@ $user->setIsAdmin($admin);
 try {
     $userRepository = new UserRepository();
     $userRepository->save($user);
-    echo 'Created Admin User with ID #' . $user->getId() . PHP_EOL;
+    echo 'Created User with ID #' . $user->getId() . PHP_EOL;
 } catch (Throwable $exception) {
     echo $exception->getMessage() . PHP_EOL;
 }
