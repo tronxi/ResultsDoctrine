@@ -40,3 +40,7 @@ function deleteUserByName(string $name)
     $userRepository = new UserRepository();
     $userRepository->deleteByName($name);
 }
+
+function createUser($var1, $var2) {
+    echo $var2;
+}

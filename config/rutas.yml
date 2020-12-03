@@ -26,3 +26,8 @@ delete_user:
         name: _default_
     methods:
         - DELETE
+createUser:
+    path:     /users/{var1}/{var2}
+    controller: 'createUser'
+    methods:
+        - POST

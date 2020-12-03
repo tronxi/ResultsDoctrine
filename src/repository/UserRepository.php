@@ -35,4 +35,18 @@ class UserRepository
         $entityManager->remove($entityManager->merge($user));
         $entityManager->flush();
     }
+
+    public function update(User $user) {
+        $entityManager = Utils::getEntityManager();
+        $oldUser = $entityManager->getRepository(User::class)
+            ->findOneBy(array(username =>$user->getUsername()));
+
+        $oldUser->setUsername($user->getUsername());
+        $oldUser->setEmail($user->getEmail());
+        $oldUser->setPassword($user->getPassword());
+        $oldUser->setEnabled($user->isEnabled());
+        $oldUser->setIsAdmin($user->isAdmin());
+        $entityManager->flush();
+    }
+
 }
