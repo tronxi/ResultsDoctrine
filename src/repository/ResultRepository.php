@@ -22,4 +22,23 @@ class ResultRepository
         return $this->resultRepositoryDoctrine->find($id);
     }
 
+    public function deleteById($id) {
+        $result = $this->findById($id);
+        $entityManager = Utils::getEntityManager();
+        $entityManager->remove($entityManager->merge($result));
+        $entityManager->flush();
+    }
+
+    public function updateById($id, $newResult) {
+        $entityManager = Utils::getEntityManager();
+        $result = $entityManager->getRepository(Result::class)
+            ->find($id);
+        $result->setResult($newResult);
+        $entityManager->flush();
+    }
+
+    public function findAll() {
+        return $this->resultRepositoryDoctrine->findAll();
+    }
+
 }

@@ -18,7 +18,11 @@ ruta_user:
         name: _default_
     methods:
         - GET
-
+create_user:
+    path:     /users
+    controller: 'createUser'
+    methods:
+        - POST
 delete_user:
     path:     /users/{name}
     controller: 'deleteUserByName'
@@ -26,8 +30,49 @@ delete_user:
         name: _default_
     methods:
         - DELETE
-createUser:
-    path:     /users/{var1}/{var2}
-    controller: 'createUser'
+        - POST
+create_user_form:
+    path:     /userform
+    controller: 'createUserForm'
+    methods:
+        - GET
+
+update_user_form:
+    path: /updateuserform/{name}
+    controller: 'updateUserForm'
+    defaults:
+        name: _default_
+    methods:
+        - GET
+update_user:
+    path: /updateuserform/
+    controller: 'updateUser'
+    defaults:
+        name: _default_
+    methods:
+        - POST
+
+result_list:
+    path:     /results
+    controller: 'findAllResults'
+    methods:
+        - GET
+delete_result:
+    path:     /results/{name}
+    controller: 'deleteResult'
+    defaults:
+        name: _default_
+    methods:
+        - GET
+
+create_result_form:
+    path:     /resultsform
+    controller: 'createResultForm'
+    methods:
+        - GET
+
+create_result:
+    path:     /results
+    controller: 'createResult'
     methods:
         - POST

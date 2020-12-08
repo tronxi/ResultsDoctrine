@@ -34,6 +34,13 @@ use JsonSerializable;
 class User implements JsonSerializable
 {
     /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+    /**
      * Id
      *
      * @ORM\Column(

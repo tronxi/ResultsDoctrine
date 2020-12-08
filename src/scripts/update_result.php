@@ -5,21 +5,18 @@ require dirname(__DIR__, 2) . '/vendor/autoload.php';
 use MiW\Results\repository\ResultRepository;
 use MiW\Results\Utility\Utils;
 
-if ($argc <= 1) {
+if ($argc <= 2) {
     echo "numero de parametros incorrecto";
     exit(0);
 }
 
 $id = (string) $argv[1];
+$newSore = (string) $argv[2];
 
 Utils::loadEnv(dirname(__DIR__, 2));
 
 $resultRepository = new ResultRepository();
 
-$result = $resultRepository->findById($id);
+$resultRepository->updateById($id, $newSore);
 
-if (in_array('--json', $argv, true)) {
-    echo json_encode($result, JSON_PRETTY_PRINT);
-} else {
-    echo $result;
-}
+echo "Actualizado result con ID: " .$id;

@@ -16,10 +16,6 @@ Utils::loadEnv(dirname(__DIR__, 2));
 
 $resultRepository = new ResultRepository();
 
-$result = $resultRepository->findById($id);
+$resultRepository->deleteById($id);
 
-if (in_array('--json', $argv, true)) {
-    echo json_encode($result, JSON_PRETTY_PRINT);
-} else {
-    echo $result;
-}
+echo "Delete result with ID: " . $id;
